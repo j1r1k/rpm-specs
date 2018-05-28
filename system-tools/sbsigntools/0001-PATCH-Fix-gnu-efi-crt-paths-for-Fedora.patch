@@ -1,0 +1,25 @@
+From 769aa06411c8c547a79b7463e3f5d0dce56633a5 Mon Sep 17 00:00:00 2001
+From: Jiri Marsicek <jiri.marsicek@gmail.com>
+Date: Thu, 10 May 2018 16:03:40 +0200
+Subject: [PATCH] [PATCH] Fix gnu-efi crt paths for Fedora
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bce6f0e..8b67491 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -70,7 +70,7 @@ AM_CONDITIONAL(TEST_BINARY_FORMAT, [ test "$EFI_ARCH" = "arm" -o "$EFI_ARCH" = "
+ ##
+ # no consistent view of where gnu-efi should dump the efi stuff, so find it
+ ##
+-for path in /lib /lib64 /usr/lib /usr/lib64 /usr/lib32 /lib/efi /lib64/efi /usr/lib/efi /usr/lib64/efi; do
++for path in /lib /lib64 /usr/lib /usr/lib64 /usr/lib32 /lib/efi /lib64/efi /usr/lib/efi /usr/lib64/efi /usr/lib/gnuefi /usr/lib64/gnuefi; do
+     if test -e $path/crt0-efi-$EFI_ARCH.o; then
+        CRTPATH=$path
+     fi
+-- 
+2.14.3
+
