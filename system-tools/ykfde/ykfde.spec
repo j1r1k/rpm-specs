@@ -7,7 +7,7 @@ License:	GPLv3+
 URL:		https://github.com/ewordm-de/mkinitcpio-ykfde
 Source:		https://github.com/eworm-de/mkinitcpio-ykfde/archive/2c1c626ca971741ffca2ed22d77545f6befe0632.tar.gz
 
-BuildRequires:	libyubikey-devel ykpers-devel python-markdown iniparser-devel keyutils-libs-devel libarchive-devel cryptsetup-devel
+BuildRequires:	gcc libyubikey-devel ykpers-devel python-markdown iniparser-devel keyutils-libs-devel libarchive-devel cryptsetup-devel python-setuptools systemd-devel >= 235
 Requires:	ykpers, systemd >= 235
 
 %description
