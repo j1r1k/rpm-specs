@@ -25,12 +25,6 @@ tar xfz "$SBST.tar.gz" --strip 1 -C "$WORK_DIR"
 
 tar xfz "$CCAN.tar.gz" --strip 1 -C "$WORK_DIR/lib/ccan.git"
 
-(
-    cd "$WORK_DIR"
-    patch -p1 < ../0001-PATCH-Fix-gnu-efi-crt-paths-for-Fedora.patch
-    ./autogen.sh
-)
-
 tar cfz "$TARGET" "$WORK_DIR"/*
 
 rm -rf "$WORK_DIR"

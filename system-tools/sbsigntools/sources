@@ -1,3 +1,2 @@
-c642ae53bee385e8b88ab51defec69d9  0001-PATCH-Fix-gnu-efi-crt-paths-for-Fedora.patch
-e0e7343e1a3d55c05773377f1218d2e8  generate-tarball.sh
-13c7199ff8741e849405219686fe6dd5  sbsigntools.combined-0.9.1.tar.gz
+aa045c9ea1d4bcd01ee2ea0584fcedcf  sbsigntools.combined-0.9.1.tar.gz
+2325955ee17705d0eac5aafcc0af0622  0001-Fix-EFI_ARCH-and-gnu-efi-crt-paths-for-Fedora.patch
