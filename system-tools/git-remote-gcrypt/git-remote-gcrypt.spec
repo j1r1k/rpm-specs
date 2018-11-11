@@ -10,7 +10,7 @@ License:    GPLv3
 URL:        https://git.spwhitton.name/%{name}
 Source0:    https://github.com/spwhitton/%{name}/archive/%{version}.tar.gz
 
-BuildRequires: python2-docutils
+BuildRequires: gcc python3-docutils
 Requires:   gnupg2 git-core
 
 %description

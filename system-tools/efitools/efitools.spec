@@ -3,7 +3,7 @@
 
 Name:           efitools
 Version:        1.8.1
-Release:        0%{?dist}
+Release:        1%{?dist}
 Summary:        Tools for manipulating UEFI secure boot platforms
 
 License:        GPLv2
@@ -12,7 +12,9 @@ URL:            http://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git
 Source0:        https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/%{name}-%{version}.tar.gz
 Source1:        https://github.com/tianocore/edk2/blob/master/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
 
-BuildRequires:  gnu-efi-devel >= 3.0q sbsigntools openssl-devel openssl help2man perl(File::Slurp) git
+Patch0:         0001-Fix-x64-arch-for-Fedora-29.patch
+
+BuildRequires:  gcc gnu-efi-devel >= 3.0q sbsigntools openssl-devel openssl help2man perl(File::Slurp) git
 Requires:       sbsigntools openssl parted dosfstools mtools
 
 %define efidir %{_datadir}/efitools/efi
@@ -24,6 +26,7 @@ Tools for manipulating keys and binary signatures on UEFI secure boot platforms.
 %autosetup -S git_am
 
 %build
+ls /usr/include/efi
 make
 
 %install
@@ -52,6 +55,9 @@ install -d %{buildroot}/%{efidir}/usb
 %doc README
 
 %changelog
+* Sun Nov 11 2018 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.8.1-1
+- Fixes for fedora 29
+
 * Thu May 10 2018 jiri.marsicek@gmail.com - 1.8.1-0
 - Bump to 1.8.1
 

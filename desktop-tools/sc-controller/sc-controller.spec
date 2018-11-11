@@ -18,7 +18,7 @@ Requires: python-setuptools, python-gobject, gtk3, gnome-python2-rsvg, pylibacl,
 %else
 Requires: python-setuptools, python-gobject, libgtk-3-0, typelib-1_0-Gtk-3_0, typelib-1_0-Rsvg-2_0, python-evdev, python-pylibacl, linux-glibc-devel, python-gobject-common-devel
 %endif
-BuildRequires: python-devel, desktop-file-utils
+BuildRequires: gcc, python-devel, desktop-file-utils
 
 %description
 Application allowing to setup, configure and use Steam Controller
