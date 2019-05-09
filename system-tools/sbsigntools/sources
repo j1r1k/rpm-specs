@@ -1,2 +1,2 @@
-aa045c9ea1d4bcd01ee2ea0584fcedcf  sbsigntools.combined-0.9.1.tar.gz
-2325955ee17705d0eac5aafcc0af0622  0001-Fix-EFI_ARCH-and-gnu-efi-crt-paths-for-Fedora.patch
+ec70dbbcf39fde3b7555aad10ac06887  sbsigntools.combined-0.9.2.tar.gz
+4e1175464279ac9664840723fbf8ff50  0001-PATCH-Fix-EFI_ARCH.patch

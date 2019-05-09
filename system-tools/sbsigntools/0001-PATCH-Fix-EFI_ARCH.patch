@@ -1,0 +1,25 @@
+From b6aeb185101d273f3f2d7ab8a86f696c5df76733 Mon Sep 17 00:00:00 2001
+From: Jiri Marsicek <jiri.marsicek@gmail.com>
+Date: Thu, 9 May 2019 13:47:39 +0200
+Subject: [PATCH] [PATCH] Fix EFI_ARCH
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1459e91..90403fe 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,7 +64,7 @@ PKG_CHECK_MODULES(uuid, uuid,
+     AC_MSG_ERROR([libuuid (from the uuid package) is required]))
+ 
+ dnl gnu-efi headers require extra include dirs
+-EFI_ARCH=$(uname -m | sed 's/i.86/ia32/;s/arm.*/arm/')
++EFI_ARCH=$(uname -m | sed 's/i.86/ia32/;s/arm.*/arm/;s/x86_64/x64/')
+ AM_CONDITIONAL(TEST_BINARY_FORMAT, [ test "$EFI_ARCH" = "arm" -o "$EFI_ARCH" = "aarch64" ])
+ 
+ ##
+-- 
+2.20.1
+

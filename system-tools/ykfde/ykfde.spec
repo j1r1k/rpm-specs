@@ -1,11 +1,11 @@
 Name:		ykfde
-Version:	0.7.4
-Release:	2c1c626%{?dist}
+Version:	0.7.6
+Release:	1%{?dist}
 Summary:	opening LUKS with yubikey
 
 License:	GPLv3+
-URL:		https://github.com/ewordm-de/mkinitcpio-ykfde
-Source:		https://github.com/eworm-de/mkinitcpio-ykfde/archive/2c1c626ca971741ffca2ed22d77545f6befe0632.tar.gz
+URL:		https://github.com/eworm-de/mkinitcpio-ykfde
+Source:		https://github.com/eworm-de/mkinitcpio-ykfde/archive/%{version}.tar.gz
 
 BuildRequires:	gcc libyubikey-devel ykpers-devel python-markdown iniparser-devel keyutils-libs-devel libarchive-devel cryptsetup-devel python-setuptools systemd-devel >= 235
 Requires:	ykpers, systemd >= 235
@@ -17,7 +17,7 @@ with the Yubikey in challenge response mode (HMAC-SHA1)
 %global debug_package %{nil}
 
 %prep
-%setup -q -n mkinitcpio-%{name}-2c1c626ca971741ffca2ed22d77545f6befe0632
+%setup -q -n mkinitcpio-%{name}-%{version}
 
 %build
 make MD=markdown_py %{?_smp_mflags}
@@ -43,6 +43,9 @@ make install-dracut DESTDIR=%{buildroot}
 %{_prefix}/share/doc/ykfde/README-mkinitcpio.md
 
 %changelog
+* Thu May 09 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.7.6
+- version 0.7.6
+
 * Sun May 13 2018 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.7.4
 - version 0.7.4 with GCC8 patch
 

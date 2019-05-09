@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:       git-remote-gcrypt
-Version:    1.1
+Version:    1.2
 Release:    1%{?dist}
 Summary:    GNU Privacy Guard-encrypted git remote
 
@@ -37,5 +37,8 @@ export prefix="%{_prefix}"
 %doc /usr/share/man/man1/%{name}.1.gz
 
 %changelog
+* Thu May 09 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.2-1
+- Bump to 1.2
+
 * Mon May 28 2018 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.1-1
 - Import from https://github.com/spwhitton/git-remote-gcrypt and bump to 1.1

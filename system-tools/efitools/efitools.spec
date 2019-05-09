@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           efitools
-Version:        1.8.1
+Version:        1.9.2
 Release:        1%{?dist}
 Summary:        Tools for manipulating UEFI secure boot platforms
 
@@ -10,7 +10,6 @@ License:        GPLv2
 URL:            http://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git
 
 Source0:        https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/%{name}-%{version}.tar.gz
-Source1:        https://github.com/tianocore/edk2/blob/master/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
 
 Patch0:         0001-Fix-x64-arch-for-Fedora-29.patch
 
@@ -38,9 +37,6 @@ rm -f %{buildroot}/%{_datadir}/efitools/README
 
 # the LockDown binary has the wrong keys in it
 rm -f %{buildroot}/%{efidir}/LockDown.efi
-
-# install EFI Shell
-install -p -m 0644 %{SOURCE1} %{buildroot}/%{efidir}/
 
 # provide empty dirs for keys and USB image built by mkusb script
 install -d %{buildroot}/%{efidir}/keys

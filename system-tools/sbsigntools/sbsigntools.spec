@@ -1,9 +1,9 @@
 %global _hardened_build 1
 
 Name:           sbsigntools
-Version:        0.9.1
+Version:        0.9.2
 
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        EFI binary signing tools
 
 License:        GPLv3
@@ -13,7 +13,7 @@ URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools
 # create combined tarball by invoking ./generate-tarball.sh $VERSION
 Source0:        %{name}.combined-%{version}.tar.gz
 
-Patch0:         0001-Fix-EFI_ARCH-and-gnu-efi-crt-paths-for-Fedora.patch
+Patch0:         0001-PATCH-Fix-EFI_ARCH.patch
 
 BuildRequires:  gcc binutils-devel openssl-devel pkgconfig automake libuuid-devel gnu-efi-devel >= 3.0q  help2man git
 
@@ -38,6 +38,9 @@ make %{?_smp_mflags}
 %doc COPYING
 
 %changelog
+* Thu May 09 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.2-3
+- bump version to 0.9.2
+
 * Sun Nov 11 2018 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.1-3
 - fixes for fedora 29
 
