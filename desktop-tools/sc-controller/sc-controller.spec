@@ -2,8 +2,8 @@
 
 Summary:       User-mode driver and GTK3 based GUI for Steam Controller
 Name:          sc-controller
-Version:       0.4.5
-Release:       2
+Version:       0.4.9.4
+Release:       1
 License:       GPL-2.0-only
 Group:         Amusements/Games/Other
 URL:           https://github.com/kozec/sc-controller
