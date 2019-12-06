@@ -1,6 +1,6 @@
 Name:           mons
 Version:        0.8.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        POSIX Shell script to quickly manage three monitors on X
 
 License:        MIT
@@ -20,8 +20,6 @@ mv libshlist-1.1/* libshlist/
 rmdir libshlist-1.1
 
 %install
-pwd
-ls *
 %make_install
 
 %files
