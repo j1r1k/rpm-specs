@@ -1,11 +1,11 @@
 Name:           mgitstatus
-Version:        0.0.d55c4cf
+Version:        2.0
 Release:        1%{?dist}
 Summary:        Show uncommitted, untracked and unpushed changes for multiple Git repos
 
 License:        MIT
 URL:            https://github.com/fboender/multi-git-status
-Source0:        https://github.com/fboender/multi-git-status/tarball/d55c4cf7448a8c470b260c6555c448e83f740a21#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/fboender/multi-git-status/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 Requires:       git
 
@@ -13,7 +13,7 @@ Requires:       git
 Show uncommited, untracked and unpushed changes in multiple Git repositories. Scan for .git dirs up to DEPTH directories deep. The default is 2. If DEPTH is 0, the scan is infinitely deep.
 
 %prep
-%setup -q -n fboender-multi-git-status-d55c4cf
+%setup -q -n multi-git-status-%{version}
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
@@ -28,5 +28,8 @@ gzip %{name}.1 > %{buildroot}/%{_mandir}/%{name}/%{name}.1.gz
 %{_mandir}/*
 
 %changelog
-* Tue Dec  6 2019 Jiri Marsicek <jiri.marsicek@gmail.com>
+* Fri May 01 2020 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.0-1
+- Bump to version 2.0
+
+* Fri Dec 06 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.0.d55c4cf
 - initial import of mgitstatus-0.0.d55c4cf
