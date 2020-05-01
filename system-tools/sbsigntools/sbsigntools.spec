@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:           sbsigntools
-Version:        0.9.2
+Version:        0.9.3
 
 Release:        1%{?dist}
 Summary:        EFI binary signing tools
@@ -12,8 +12,6 @@ URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools
 # upsream source tarball does not contain ccan source submodule
 # create combined tarball by invoking ./generate-tarball.sh $VERSION
 Source0:        %{name}.combined-%{version}.tar.gz
-
-Patch0:         0001-PATCH-Fix-EFI_ARCH.patch
 
 BuildRequires:  gcc binutils-devel openssl-devel pkgconfig automake libuuid-devel gnu-efi-devel >= 3.0q  help2man git
 
@@ -38,6 +36,9 @@ make %{?_smp_mflags}
 %doc COPYING
 
 %changelog
+* Fri May 01 2020 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.3-1
+- bump version to 0.9.3
+
 * Thu May 09 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.2-3
 - bump version to 0.9.2
 
