@@ -1,6 +1,6 @@
 Name: gfxtablet
 Version: 1.5
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Draw on your PC via your Android device
 
 License: MIT
@@ -23,7 +23,7 @@ cd driver-uinput
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
-cp driver-uinput/networktablet %{buildroot}/%{_bindir}
+cp driver-uinput/networktablet %{buildroot}/%{_bindir}/gfxtablet
 
 ls %{buildroot}/%{_bindir}
 
@@ -34,5 +34,5 @@ ls %{buildroot}/%{_bindir}
 %{_bindir}/*
 
 %changelog
-* Mon May 11 2020 Jiri Marsicek <jiri.marsicek@gmail.com>  - 1.5-1
+* Mon May 11 2020 Jiri Marsicek <jiri.marsicek@gmail.com>  - 1.5-2
 - Initial import of android-app-1.4-linux-driver-1.5
