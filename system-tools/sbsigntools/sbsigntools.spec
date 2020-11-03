@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:           sbsigntools
-Version:        0.9.3
+Version:        0.9.4
 
 Release:        1%{?dist}
 Summary:        EFI binary signing tools
@@ -36,6 +36,9 @@ make %{?_smp_mflags}
 %doc COPYING
 
 %changelog
+* Tue Nov 03 2020 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.4-1
+- bump version to 0.9.4
+
 * Fri May 01 2020 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.9.3-1
 - bump version to 0.9.3
 
