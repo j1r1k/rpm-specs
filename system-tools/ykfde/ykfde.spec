@@ -1,5 +1,5 @@
 Name:		ykfde
-Version:	0.7.6
+Version:	0.7.7
 Release:	1%{?dist}
 Summary:	opening LUKS with yubikey
 
@@ -43,6 +43,9 @@ make install-dracut DESTDIR=%{buildroot}
 %{_prefix}/share/doc/ykfde/README-mkinitcpio.md
 
 %changelog
+* Wed Apr 21 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.7.7-1
+- version 0.7.7
+
 * Thu May 09 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.7.6
 - version 0.7.6
 
