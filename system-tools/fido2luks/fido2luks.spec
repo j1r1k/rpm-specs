@@ -24,12 +24,12 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 %build
-make
+cargo build --release
 
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
-make -f .copr/Makefile install root=%{buildroot}
+install -D target/release/fido2luks %{buildroot}/%{_bindir}/fido2luks
 install -Dm 755 -d dracut/96luks-2fa %{buildroot}/%{_prefix}/lib/dracut/modules.d/96luks-2fa
 install -Dm 644 dracut/96luks-2fa/fido2luks.conf %{buildroot}/%{_prefix}/lib/dracut/modules.d/96luks-2fa/fido2luks.conf
 install -Dm 755 dracut/96luks-2fa/luks-2fa-generator.sh %{buildroot}/%{_prefix}/lib/dracut/modules.d/96luks-2fa/luks-2fa-generator.sh
