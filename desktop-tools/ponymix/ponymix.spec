@@ -1,6 +1,6 @@
 Name: ponymix
 Version: 5
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: CLI volume control for PulseAudio
 
 License: MIT
@@ -8,7 +8,6 @@ URL: https://github.com/falconindy/%{name}
 Source0: https://github.com/falconindy/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires: g++ pulseaudio-libs-devel
-Requires: pulseaudio
 Recommends: bash-completion zsh
 
 %description
@@ -36,5 +35,8 @@ Ponymix is a command line mixer for PulseAudio.
 %{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
+* Wed Nov 03 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 5-2
+- remove runtime dependency on pulseaudio
+
 * Wed Aug 14 2019 Jiri Marsicek <jiri.marsicek@gmail.com> - 5-1
 - Initial import
