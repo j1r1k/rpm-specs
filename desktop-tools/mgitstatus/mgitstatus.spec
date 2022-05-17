@@ -1,5 +1,5 @@
 Name:           mgitstatus
-Version:        2.0
+Version:        2.1
 Release:        1%{?dist}
 Summary:        Show uncommitted, untracked and unpushed changes for multiple Git repos
 
@@ -28,6 +28,9 @@ gzip %{name}.1 > %{buildroot}/%{_mandir}/%{name}/%{name}.1.gz
 %{_mandir}/*
 
 %changelog
+* Tue May 17 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.1-1
+- Bump to version 2.1
+
 * Fri May 01 2020 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.0-1
 - Bump to version 2.0
 

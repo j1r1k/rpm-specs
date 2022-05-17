@@ -17,7 +17,7 @@
 
 
 Name:           rofi-calc
-Version:        2.0.0
+Version:        2.1.0
 Release:        1.7
 Summary:        Calculator for rofi
 License:        MIT
@@ -65,6 +65,8 @@ rm %{buildroot}%{_libdir}/rofi/calc.la
 %{_libdir}/rofi/calc.so
 
 %changelog
+* Tue May 17 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.1.0-1.7
+- Update to 2.1.0
 * Mon Nov 16 2020 Michael Vetter <mvetter@suse.com>
 - Update to 2.0.0:
   * Add option to completely disable history #63

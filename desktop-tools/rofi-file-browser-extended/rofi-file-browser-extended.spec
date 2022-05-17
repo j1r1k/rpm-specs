@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:           rofi-file-browser-extended
-Version:        1.2.0
+Version:        1.3.1
 Release:        1
 Summary:        Use rofi to quickly open files
 License:        MIT
@@ -34,6 +34,9 @@ make %{?_smp_mflags}
 %{_libdir}/rofi/filebrowser.so
 
 %changelog
+* Tue May 17 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.3.1-1
+- Update to v1.3.1
+
 * Tue Nov 09 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.2.0-1
 - Initial spec
 
