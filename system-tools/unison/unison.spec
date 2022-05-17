@@ -1,8 +1,8 @@
 
 # These is the exact upstream version we are packaging
 %global ver_maj 2
-%global ver_min 51
-%global ver_patch 4
+%global ver_min 52
+%global ver_patch 1
 
 # All Unison versions sharing ver_compat are compatible
 # Examples are 2.13.15 and 2.13.16 -> ver_compat == 2.13
@@ -276,6 +276,9 @@ fi
 %{_bindir}/unison-fsmonitor-%{ver_compat}
 
 %changelog
+* Tue May 17 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.52.1-0
+- bump to 2.52.1
+
 * Wed Oct 27 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.51.4-0
 - bump to 2.51.4
 
