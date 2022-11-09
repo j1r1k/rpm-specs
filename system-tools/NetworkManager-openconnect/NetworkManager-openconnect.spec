@@ -1,3 +1,13 @@
+%global gitsnapshot 1
+%if 0%{?gitsnapshot}
+%global snapcommit 3c1590786518e9acca33c250660ad21cae565acd
+%global snapcount 81
+%global shortcommit %(c=%{snapcommit}; echo ${c:0:7})
+%global snapver .git.%{snapcount}.%{shortcommit}
+%endif
+
+%global tagver 1.2.9
+
 %if 0%{?fedora} < 28 && 0%{?rhel} < 8
 %bcond_without libnm_glib
 %else
@@ -17,11 +27,15 @@
 
 Summary:   NetworkManager VPN plugin for openconnect
 Name:      NetworkManager-openconnect
-Version:   1.2.9
+Version:   %{tagver}%{?snapver}
 Release:   0%{?dist}
 License:   GPLv2+ and LGPLv2
 URL:       http://www.gnome.org/projects/NetworkManager/
-Source0:   https://gitlab.gnome.org/GNOME/%{name}/-/archive/%{version}-dev/NetworkManager-openconnect-%{version}-dev.tar.gz
+%if 0%{?gitsnapshot}
+Source0:   https://gitlab.gnome.org/GNOME/%{name}/-/archive/%{snapcommit}/%{name}-%{snapcommit}.tar.gz
+%else
+Source0:   https://www.infradead.org/openconnect/download/%{name}-%{version}.tar.gz
+%endif
 
 BuildRequires: make
 BuildRequires: gcc
@@ -70,10 +84,15 @@ This package contains software for integrating VPN capabilities with
 the OpenConnect client with NetworkManager (GNOME files).
 
 %prep
-%autosetup -p1 -n %{name}-%{version}-dev
+%if 0%{?gitsnapshot}
+%autosetup -p1 -n %{name}-%{snapcommit}
+NOCONFIGURE=x ./autogen.sh
+%else
+$autosetup -p1
 if [ ! -x configure ]; then
     NOCONFIGURE=x ./autogen.sh
 fi
+%endif
 
 %build
 %configure \
@@ -121,7 +140,7 @@ fi
 
 %files -f %{name}.lang
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect.so
-%{_sysconfdir}/dbus-1/system.d/nm-openconnect-service.conf
+%{_datadir}/dbus-1/system.d/nm-openconnect-service.conf
 %{_prefix}/lib/NetworkManager/VPN/nm-openconnect-service.name
 %{_libexecdir}/nm-openconnect-service
 %{_libexecdir}/nm-openconnect-service-openconnect-helper
@@ -131,7 +150,7 @@ fi
 %files gnome
 %{_libexecdir}/nm-openconnect-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect-editor.so
-%{_datadir}/appdata/network-manager-openconnect.metainfo.xml
+%{_datadir}/metainfo/network-manager-openconnect.metainfo.xml
 
 %if %with gtk4
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openconnect-editor.so
@@ -144,8 +163,5 @@ fi
 
 
 %changelog
-* Wed Nov 09 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 1.2.9-0
-- Bump to 1.2.9-dev
-
 * Sat Apr 30 2022 David Woodhouse <dwmw2@infradead.org> - %{version}-%{release}
 - Autopackaging for COPR
