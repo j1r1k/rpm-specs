@@ -2,17 +2,19 @@
 %define __os_install_post %{_dbpath}/brp-compress
 %define debug_package %{nil}
 
+%define git_sha dbe9a83b57212da15daaab2df0ad9d2fde26cb77
+
 Name: fido2luks
 Summary: Decrypt your LUKS partition using a FIDO2 compatible authenticator
 # Version: @@VERSION@@
-Version: 0.2.19
+Version: 0.2.20
 Release: 1%{?dist}
 License:                     Mozilla Public License Version 2.0
 Group: Applications/System
-Source: https://github.com/shimunn/fido2luks/archive/%{version}.tar.gz
+Source: https://github.com/shimunn/fido2luks/archive/%{git_sha}/%{name}-%{version}.tar.gz
 URL: https://github.com/shimunn/fido2luks
-Requires: dracut, cryptsetup >= 2.2.0, cryptsetup-libs >= 2.2.0
-BuildRequires: cargo, clang-devel, cryptsetup >= 2.2.0, cryptsetup-devel >= 2.2.0, cryptsetup-libs >= 2.2.0
+Requires: dracut, cryptsetup >= 2.5.0, cryptsetup-libs >= 2.5.0
+BuildRequires: cargo, clang-devel, cryptsetup >= 2.5.0, cryptsetup-devel >= 2.5.0, cryptsetup-libs >= 2.5.0
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -20,8 +22,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 %{summary}
 
 %prep
-%setup -q
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+%setup -q -n %{name}-%{git_sha}
 
 %build
 cargo build --release
@@ -58,6 +59,9 @@ rm -rf %{buildroot}
 %doc README.md
 
 %changelog
+* Wed Nov 23 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.2.20-1
+- Bump to git latest
+
 * Tue Aug 03 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.2.19-1
 - bump to 0.2.19
 
