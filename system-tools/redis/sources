@@ -1,0 +1,9 @@
+6790993bbb53b38a75e74106bcebdcff  0001-1st-man-pageis-for-redis-cli-redis-benchmark-redis-c.patch
+bd8e5a60ef307fa90f14a67cd66e35af  macros.redis
+a468e58da60799213735eccb59e7efb4  redis-6.2.7.tar.gz
+2bd68e89d84b17c1fa996949260446cd  redis-doc-3fdb6df.tar.gz
+b21aa948e078a9e3fae88c4f9adc81da  redis-limit-systemd
+ab01fdf6b36b7b5b8faff81f99bfe639  redis.logrotate
+41dde6fb5711960d48de33ac8398d380  redis-sentinel.service
+c9e0a67bc1b2db32ae2d1e7987cee559  redis.service
+4a97a52f9c268f33c5ca28fb823cb32e  redis-shutdown
