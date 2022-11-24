@@ -1,4 +1,3 @@
-
 # These is the exact upstream version we are packaging
 %global ver_maj 2
 %global ver_min 52
@@ -23,21 +22,20 @@
 %global provide_unison 1
 
 # Gtk2 build isn't working for el8
-# el8 does not provide LaTeX
-%if 0%{?el8}
-%global include_gtk 0
-%global build_docs 0
-%else
 %global include_gtk 1
 %global build_docs 1
+# el8 and newer does not provide LaTeX
+%if 0%{?el8}%{?el9}
+%global include_gtk 0
+%global build_docs 0
 %endif
 
 
 %global git_tag %{ver_maj}.%{ver_min}.%{ver_patch}
 
-Name:      unison%{ver_compat_name}
+Name:      unison
 Version:   %{ver_compat}%{ver_noncompat}
-Release:   0%{?dist}
+Release:   2%{?dist}
 
 Summary:   Multi-master File synchronization tool
 
@@ -59,6 +57,7 @@ BuildRequires: /usr/bin/lynx
 %endif
 
 Requires:   %{name}-ui = %{version}-%{release}
+Obsoletes: unison251 < 2.51.5
 
 Requires(posttrans): %{_sbindir}/alternatives
 Requires(postun):    %{_sbindir}/alternatives
@@ -85,16 +84,11 @@ BuildRequires: gtk2-devel
 BuildRequires: desktop-file-utils
 
 Requires: %name = %{version}-%{release}
+Obsoletes: unison251-gtk < 2.51.5
 Recommends: %name-fsmonitor = %{version}-%{release}
 
 Provides:   %{name}-ui = %{version}-%{release}
 
-# Enforce the switch from unison to unisonN.NN
-Obsoletes: unison < 2.27.57-3
-# Let users just install "unison" if they want
-%if 0%{?provide_unison}
-Provides: unison = %{version}-%{release}
-%endif
 
 %description gtk
 This package provides the graphical version of unison with gtk2 interface.
@@ -105,6 +99,7 @@ This package provides the graphical version of unison with gtk2 interface.
 Summary:   Multi-master File synchronization tool - text interface
 
 Requires: %name = %{version}-%{release}
+Obsoletes: unison251-text < 2.51.5
 Recommends: %name-fsmonitor = %{version}-%{release}
 
 Provides:   %{name}-ui = %{version}-%{release}
@@ -117,6 +112,7 @@ This package provides the textual version of unison without graphical interface.
 Summary:   Multi-master File synchronization tool - fsmonitor
 
 Requires: %name = %{version}-%{release}
+Obsoletes: unison251-fsmonitor < 2.51.5
 
 Provides:   %{name}-fsmonitor = %{version}-%{release}
 
@@ -142,6 +138,7 @@ EOF
 %build
 # MAKEFLAGS=-j<N> breaks the build.
 unset MAKEFLAGS
+unset CFLAGS
 
 %if %{include_gtk}
 # we compile 2 versions: gtk2 ui and text ui
@@ -165,7 +162,7 @@ cp -f %{SOURCE1} unison-manual.html
 %if %{include_gtk}
 install -m 755 -D unison-gtk %{buildroot}%{_bindir}/unison-gtk-%{ver_compat}
 # symlink for compatibility
-ln -s %{_bindir}/unison-gtk-%{ver_compat} %{buildroot}%{_bindir}/unison-%{ver_compat}
+ln -s unison-gtk-%{ver_compat} %{buildroot}%{_bindir}/unison-%{ver_compat}
 install -D icons/U.svg %{buildroot}%{_datadir}/pixmaps/%{name}.svg
 
 desktop-file-install --dir %{buildroot}%{_datadir}/applications \
@@ -255,7 +252,7 @@ fi
 
 
 %files
-%doc src/COPYING src/NEWS src/README unison-manual.html
+%doc src/COPYING src/README unison-manual.html
 %license LICENSE
 
 %if %{include_gtk}
@@ -276,11 +273,18 @@ fi
 %{_bindir}/unison-fsmonitor-%{ver_compat}
 
 %changelog
-* Tue May 17 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.52.1-0
-- bump to 2.52.1
+* Mon Sep 15 2022 Jerzy Drozdz <jerzy.drozdz@jdsieci.pl> - 2.52.1-2
+- EL9 package
 
-* Wed Oct 27 2021 Jiri Marsicek <jiri.marsicek@gmail.com> - 2.51.4-0
-- bump to 2.51.4
+* Wed Jul 20 2022 Jerzy Drozdz <jerzy.drozdz@jdsieci.pl> - 2.52.1-1
+- Update to 2.52.1
+- Package name change to unison, 2.52 got compability https://github.com/bcpierce00/unison/wiki/2.52-Migration-Guide
+
+* Wed Jul 20 2022 Jerzy Drozdz <jerzy.drozdz@jdsieci.pl> - 2.51.5-1
+- Update to 2.51.5
+
+* Thu Aug 12 2021 Jerzy Drozdz <jerzy.drozdz@jdsieci.pl> - 2.51.4-1
+- Update to 2.51.4
 
 * Sat Jan 09 2021 Jerzy Drozdz <jerzy.drozdz@jdsieci.pl> - 2.51.3-10
 - fsmonitor moved to seperate package
@@ -502,4 +506,3 @@ fi
 
 * Fri Oct 31 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:2.9.70-0.fdr.1
 - First Fedora release
-
