@@ -1,11 +1,12 @@
 Name:       swaync
-Version:    0.7.3
+Version:    0.8.0
 Release:    1%{?dist}
 Summary:    Notification daemon with GTK GUI
 Provides:   desktop-notification-daemon
 License:    GPLv3
 URL:        https://github.com/ErikReider/SwayNotificationCenter
 Source0:    https://github.com/ErikReider/SwayNotificationCenter/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
 BuildRequires:    meson >= 0.51.0
 BuildRequires:    vala
 
@@ -20,6 +21,7 @@ BuildRequires: libhandy-devel >= 1.4.0
 BuildRequires: systemd-devel
 BuildRequires: systemd
 BuildRequires: scdoc
+BuildRequires: pulseaudio-libs-devel
 %{?systemd_requires}
 
 %description
@@ -70,6 +72,9 @@ A simple notification daemon with a GTK gui for notifications and the control ce
 
 # Changelog will be empty until you make first annotated Git tag.
 %changelog
+* Mon Feb 27 2023 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.8.0-1
+- Bump to 0.8.0
+
 * Tue Nov 29 2022 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.7.3-1
-- Bump to 7.2.3
+- Bump to 0.7.3
 
