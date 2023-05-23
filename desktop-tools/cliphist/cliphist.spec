@@ -1,4 +1,4 @@
-%global commit df85b70a9033cb400ca8758192eb901f21718f04
+%global commit 3415b2945e3394e12a1c15867646405826fefb74
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 # https://github.com/yory8/cliphist
@@ -10,7 +10,7 @@
 %global godocs          readme.md
 
 Name:           cliphist
-Version:        0.3.1
+Version:        0.4.0
 Release:        1%{dist}
 Summary:        A simple clipboard manager for Wayland
 
@@ -51,6 +51,9 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
+* Tue May 23 2023 Jiri Marsicek <jiri.marsicek@gmail.com> - 0.4.0-1
+- Bump to 0.4.0.3415b29
+
 * Mon Feb 27 2023 Jiri Marsicek <jiri.marsicek@gmail.com> - 0-0.3.1-df85b70
 - Bump to 0.3.1.df85b70
 
