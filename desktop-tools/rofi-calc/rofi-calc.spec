@@ -17,7 +17,7 @@
 
 
 Name:           rofi-calc
-Version:        2.1.0
+Version:        2.2.0
 Release:        1.7
 Summary:        Calculator for rofi
 License:        MIT
